@@ -1,11 +1,4 @@
-import React, { useEffect, useState} from 'react';
-import { View, StyleSheet, Text, SafeAreaView, Image, Button } from 'react-native';
-import { FlatList, ScrollView, RectButton } from 'react-native-gesture-handler';
-import Header from '../../src/components/Header';
-import {preco} from '../../Data';
-
-
-export default function Sell () {
+export default function Pokemon1 () {
 
     
     const [pokemons, setPokemon] = useState([])
@@ -71,42 +64,33 @@ function PokemonShow (item) {
         </View>
         </ScrollView>
     )
+
+  
 }
 
 
 
-const styles = StyleSheet.create({
-    container:{
-        flex:1,
-        backgroundColor: '#fff',
-        justifyContent: 'center',
-        padding: 15,
-        alignItems: 'center',
-        paddingTop: 20,
-        borderRadius: 8
+export const price = [
+    
 
+    {
+
+        id: 1,
+        name: 'pokemon',
+        price: 200,
         
     },
 
-    image1: {
-        width: 50,
-        height: 50,
-        padding: 55,
-        
+    {
+        id: 2,
+        name: 'Fifa 20',
+        price: 199
     },
 
-    title1: {
-        fontWeight: 'bold',
-        fontSize: 25,
+    {
+        id: 3,
+        name: 'Fifa 21',
+        price: 300
     },
-
-    price:{
-        fontSize: 14
-    },
-
-   
-   
-
-  
-});
-
+    
+]

@@ -1,125 +1,41 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, Component } from 'react';
 import { View, StyleSheet, Text, StatusBar, SafeAreaView, Image } from 'react-native';
 import { BorderlessButton, RectButton, ScrollView, TextInput, FlatList } from 'react-native-gesture-handler';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { Feather } from '@expo/vector-icons';
 import Header from '../../src/components/Header';
-import Items from '../Items/item';
+import { price } from '../../Data';
+import Products from '../../Products';
+import { connect } from 'react-redux';
+import Sell from '../../src/services/sell'
 
+class Buy extends Component {
 
-
-
-export default function Buy () {
-
-    const [isFiltersVisible, setIsFiltersVisible] = useState(false);
-
-    function handleToggleFiltersVisible() {
-        setIsFiltersVisible(!isFiltersVisible);
+    static navigationOptions = {
+        headerTitle: 'Electronics'
     }
-
-    const [pokemons, setPokemon] = useState([])
-
-    
-   
-    useEffect(() => {
-        fetch('https://pokeapi.co/api/v2/pokemon',{
-            method: 'GET',
-            headers: {
-                'Accept': 'application/json'
-            }
-        })
-        .then(Response => Response.json())
-        .then(data => {
-            setPokemon(data.results)
-        })
-    }, [])
-
-   
-    return (
-
-        <Header
-            title="Pokemon disponíveis" 
-            headerRight={(
-                <BorderlessButton onPress={handleToggleFiltersVisible}>
-                    <Feather name="filter" size={23} color="#333" />
-                </BorderlessButton>
-            )}>
-           {isFiltersVisible && (  
-                <View style={styles.searchForm}>
-                        <Text style={styles.label}>Qual o pokemon:</Text>
-                        <TextInput style={styles.input} 
-                        placeholder="Escolha o seu pokemon?" 
-                        placeholderTextColor="#c1bccc" />
-                    
-                        <View style={styles.inputGroup}>
-                            <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Elemento:</Text>
-                        <TextInput style={styles.input}
-                        placeholder="Qual o elemento?" 
-                        placeholderTextColor="#c1bccc"/>
-                    
-                            </View>
-
-                            <View style={styles.inputBlock}>
-                            <Text style={styles.label}>Preço:</Text>
-                        <TextInput style={styles.input}
-                        placeholder="Escolha um valor?" 
-                        placeholderTextColor="#c1bccc"/>
-                    
-                            </View>
-
-                        </View>
-
-                        <RectButton onPress={handleToggleFiltersVisible} style={styles.submitButton}>
-                            <Text style={styles.submitButtonText}>Filtrar</Text>
-                        </RectButton>
-                        </View>
-           )}
-        <SafeAreaView>
-          <FlatList 
-            data={pokemons}
-            keyExtractor={(shoe) => shoe.name}
-            contentContainerStyle={{ flexDirection: 'column'}}
-            renderItem={PokemonShow}
-            />
-        </SafeAreaView>
-        </Header>
-        
-    );
-
-    function PokemonShow (item) {
-
-        const { name, url } = item.item
-    
-        const pokemonNumber = url.replace('https://pokeapi.co/api/v2/pokemon/', '').replace('/', '')
-    
-        const imageUrl = 'https://pokeres.bastionbot.org/images/pokemon/'+pokemonNumber+'.png'
-    
-        return(
-    
-            <ScrollView
-            contentContainerStyle={{
-                paddingBottom: 16,
-            }}>
-            <View style={styles.container}>
-    
+    render() {
+        return (
             <View>
-                <Image style={styles.image1} source={{uri: imageUrl}}/>
-                <Text style={styles.title1}>
-                    {name} 
-                </Text>
-                <Text style={styles.price}> Preço: ****</Text>
-                </View>
-    
-            </View>
-            </ScrollView>
-        )
-    }
 
-    
-    
+            <Header title="Pokemon disponíveis" />
+            <ScrollView>
+                <View>
+                <Products products={price} onPress={this.props.addItemToCart} />
+                </View>
+            </ScrollView>
+
+            </View>
+        );
+    }
 }
 
-
+const mapDispatchToProps = (dispatch) => {
+    return {
+        addItemToCart:(product) => dispatch({ type: 'ADD_TO_CART', payload: product})
+    }
+}
+export default connect(null, mapDispatchToProps)(Buy);
 
 const styles = StyleSheet.create({
     container:{
@@ -127,9 +43,7 @@ const styles = StyleSheet.create({
         backgroundColor: '#e9e3ce',
 
     },
-
-
-
+ 
 
     teacherList: {
         marginTop: -40,
@@ -206,4 +120,3 @@ const styles = StyleSheet.create({
         fontSize: 14
     },
 });
-

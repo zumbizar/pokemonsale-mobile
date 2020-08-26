@@ -3,8 +3,6 @@ import { View, Image, Text, StyleSheet } from 'react-native';
 import { BorderlessButton } from 'react-native-gesture-handler';
 import back from '../../../assets/backicon.png';
 import logoImg from '../../../assets/logo1.png';
-
-
 import { useNavigation } from '@react-navigation/native';
 
 interface PageHeaderProps {

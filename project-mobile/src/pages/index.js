@@ -3,8 +3,9 @@ import { View, Text, StyleSheet, Image } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import heartIcon from '../../assets/heart1.png';
 import logo from '../../assets/logo1.png'
-
 import { RectButton } from 'react-native-gesture-handler';
+
+
 
 
 
@@ -14,7 +15,7 @@ function Home() {
     const { navigate } = useNavigation();
 
     function handleNavigateToBuy() {
-        navigate('Buy');
+        navigate('Appp');
     }
 
     function handleNavigateToSell(){
@@ -128,12 +129,12 @@ const styles = StyleSheet.create({
         fontSize: 12,
         lineHeight: 100,
         maxHeight: 200,
-        marginTop: 40,
+        marginTop: 10,
     },
 
     heart: {
-        width: 50,
-        height: 50
+        width: 25,
+        height: 25
     }
   
 });
