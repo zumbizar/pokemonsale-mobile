@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 import Header from '../../src/components/Header';
 import Products from '../../Products';
 import { connect } from 'react-redux';
@@ -10,18 +10,27 @@ class Cart extends Component {
         return (
             <View>
                 <Header title="Seu carrinho" /> 
-
+               
                 <ScrollView>
                     <View>
                         {this.props.cartItems.length > 0?
                             <Products onPress={this.props.removeItem}
                              products={this.props.cartItems} />
-                            : <Text>Sem items no carrinho..</Text>
+                            : <Text style={{ color: '#333',
+                            fontSize: 20,
+                            alignItems: 'center',
+                            justifyContent: 'center',
+                            lineHeight: 25,
+                            fontWeight: 'bold', marginHorizontal: 80, margin: 10
+                            }}>Sem items no carrinho..</Text>
                         }
                     </View>
                 </ScrollView>
+               
                 
+            
             </View>
+           
         );
     }
 }
