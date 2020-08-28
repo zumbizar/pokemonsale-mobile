@@ -14,7 +14,7 @@ export const product = [
         id: 2,
         name: 'Ivysaur',
         price: 250,
-        image: 'https://pokeres.bastionbot.org/images/pokemon/2.png'
+        uri: 'https://pokeres.bastionbot.org/images/pokemon/2.png'
     },
 
     {
@@ -27,30 +27,35 @@ export const product = [
 
     {
         id: 4,
-        name: 'Pokemon 4',
-        price: 199,
+        name: 'Charmander',
+        price: 299,
         image: 'https://pokeres.bastionbot.org/images/pokemon/4.png'
     },
 
     {
         id: 5,
-        name: 'Pokemon 5',
-        price: 199,
+        name: 'Charmeleon',
+        price: 350,
     },
 
     {
         id: 6,
-        name: 'Pokemon 6',
-        price: 199,
+        name: 'Charizard',
+        price: 399,
     },
+    
 ]
 
-export const image = [
-    {
-        "id": 4,
-        "image": "https://pokeres.bastionbot.org/images/pokemon/1.png"
-    }
-] 
+export const product1 = [
+
+  {  
+   id: 2,
+   namee: 'adasd'
+    
+  }
+]
+
+
 
 
     

@@ -2,7 +2,7 @@ import React, { useEffect, useState} from 'react';
 import { View, StyleSheet, Text, SafeAreaView, Image, Button } from 'react-native';
 import { FlatList, ScrollView, RectButton } from 'react-native-gesture-handler';
 import Header from '../../src/components/Header';
-import {preco} from '../../Data';
+
 
 
 export default function Sell () {
@@ -72,7 +72,6 @@ function PokemonShow (item) {
         </ScrollView>
     )
 }
-
 
 
 const styles = StyleSheet.create({
